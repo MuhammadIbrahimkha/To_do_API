@@ -5,12 +5,12 @@ namespace To_do_API.Models.Domain
     public class Tasks
     {
         public int Id { get; set; }
-
-        [StringLength(100)]
+        [Required]
+        [MinLength(10)]
+        [MaxLength(20)]
         public string Title { get; set; }
 
-
-        [StringLength(200)]
+        [Required]
         public string Description { get; set; }
 
     }

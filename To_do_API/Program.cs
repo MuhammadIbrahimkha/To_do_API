@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using To_do_API.Data;
 using To_do_API.Repository.Interfaces;
 using To_do_API.Repository.Concret_Classes;
+using To_do_API.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,14 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("TasksDb")));
 // Register Dependencies...
 
 builder.Services.AddScoped<ITaskRepository, SQLTaskRepository>();   
+
+
+// Register Automapper
+
+builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
+
+
+
 
 var app = builder.Build();
 
